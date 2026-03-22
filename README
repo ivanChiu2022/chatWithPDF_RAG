@@ -1,0 +1,51 @@
+An interactive AI-powered application that allows users to upload PDF documents and ask questions in natural language. The system uses Retrieval-Augmented Generation (RAG) to ensure responses are grounded in the uploaded document.
+
+Features
+📂 Upload PDF documents
+💬 Ask questions in natural language
+🧠 AI-generated answers using OpenAI LLM
+🔎 Context-aware retrieval (RAG)
+📑 Source page references
+⚡ Fast vector search using ChromaDB
+🌐 Simple UI built with Gradio
+
+![ChatWithPDF Screenshot](https://s3.ca-central-1.amazonaws.com/ivanchiu.info/asset/chatWithPDF.png)
+
+
+How it Works 
+
+1) PDF Handling 
+
+Load PDF using PyPDFLoader
+Split text into smaller chunks
+Convert chunks into embeddings via OpenAI
+Store embeddings in Chroma vector database
+
+PDF → Text → Chunks → Embeddings → Vector DB
+
+2) Prompt Handling (RAG)
+
+Convert user question into embedding
+Retrieve most relevant chunks from vector DB
+Build prompt with:
+      Context (retrieved chunks)
+      User question
+Generate answer using OpenAI LLM
+
+Question → Embedding → Retrieve → Prompt → Answer
+
+3) Remark : API and virtual (Windows CMD)
+
+.venv\Scripts\activate
+set OPENAI_API_KEY="XXXXXXXX"
+python app.py
+http://127.0.0.1:7860
+
+4) Run
+
+go to http://127.0.0.1:7860
+Upload a PDF file
+Wait for processing (embedding + indexing)
+Ask questions in the chat box
+Get AI-generated answers based on the document
+
